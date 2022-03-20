@@ -78,30 +78,27 @@ function App() {
           {/* End hero unit */}
           <Grid container spacing={4}>
             {data.map((card, i) => (
-              <Grid item key={i} xs={12} sm={6} md={4}>
-                <Card
-                  sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-                >
-                  <CardMedia
-                    component="img"
-                    sx={{
-                      // 16:9
-                      pt: '56.25%',
-                    }}
-                    image={card.image || "API GAVE NO IMAGE"}
-                    alt="random"
-                  />
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {card.post_title}
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small">View</Button>
-                    <Button size="small">Edit</Button>
-                  </CardActions>
-                </Card>
-              </Grid>
+              card.image ?
+                <Grid item key={i} xs={12} sm={6} md={4}>
+                  <Card
+                    sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+                  >
+                    <CardMedia
+                      component="img"
+                      sx={{
+                        // 16:9
+                        pt: '56.25%',
+                      }}
+                      image={card.image || "API GAVE NO IMAGE"}
+                      alt="random"
+                    />
+                    <CardContent sx={{ flexGrow: 1 }}>
+                      <Typography gutterBottom variant="h5" component="h2" dir="rtl">
+                        {card.post_title}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Grid> : <div></div>
             ))}
           </Grid>
         </Container>
