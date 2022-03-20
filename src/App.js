@@ -16,9 +16,6 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 const axios = require('axios');
 
-
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
 const theme = createTheme();
 
 function App() {
@@ -27,7 +24,6 @@ function App() {
 
   useEffect(async () => {
     const res = await axios.get('https://tipfinanci.co.il/wp-json/vue/posts')
-    console.log(res.data)
     setData(res.data)
   }, [])
 
@@ -47,7 +43,7 @@ function App() {
           sx={{
             bgcolor: 'background.paper',
             pt: 8,
-            pb: 6,
+            pb: 0,
           }}
         >
           <Container maxWidth="sm">
@@ -75,7 +71,6 @@ function App() {
           </Container>
         </Box>
         <Container sx={{ py: 8 }} maxWidth="md">
-          {/* End hero unit */}
           <Grid container spacing={4}>
             {data.map((card, i) => (
               card.image ?
@@ -98,7 +93,7 @@ function App() {
                       </Typography>
                     </CardContent>
                   </Card>
-                </Grid> : <div></div>
+                </Grid> : <div key={i}></div>
             ))}
           </Grid>
         </Container>
